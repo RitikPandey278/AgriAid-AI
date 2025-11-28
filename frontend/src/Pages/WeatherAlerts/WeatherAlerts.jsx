@@ -307,21 +307,23 @@ Real-time weather updates and early warnings to protect your crops </p> </div>
           <CardHeader>
             <CardTitle>Weather & Farm Alerts</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-5 ">
+            
             {alerts.map((alert) => (
               <Alert
-                key={alert.id}
-                className={`${getAlertColor(alert.type)} border rounded-lg p-4 flex items-start`}
+               key={alert.id}
+                className={`${getAlertColor(alert.type)} border rounded-lg p-5 flex items-center gap-6`}
               >
-                <alert.icon
-                  className={`w-5 h-5 mr-3 ${getAlertIconColor(alert.type)}`}
-                />
-                <div>
+                <div className={`flex-shrink-0 ${getAlertIconColor(alert.type)}`}>
+                 <alert.icon className="w-6 h-6" />
+                </div>
+               <div className="min-w-0">
                   <AlertTitle>{alert.title}</AlertTitle>
                   <AlertDescription>{alert.description}</AlertDescription>
                 </div>
               </Alert>
-            ))}
+           ))}
+            
           </CardContent>
         </Card>
 

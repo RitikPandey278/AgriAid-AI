@@ -192,10 +192,10 @@ export default function ExpertSuggestions() {
               <div>
                 <label className="text-sm text-gray-600 mb-2 block">Select Your Crop</label>
                 <Select value={selectedCrop} onValueChange={setSelectedCrop}>
-                  <SelectTrigger>
+                  <SelectTrigger className={"bg-green-100 text-green-800 border border-green-200 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-300"}>
                     <SelectValue placeholder="Choose crop" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className={"bg-white text-gray-900 border border-gray-200 rounded-md shadow-lg z-50 mt-1 min-w-[160px]"}>
                     {crops.map(crop => (
                       <SelectItem key={crop.value} value={crop.value}>
                         {crop.label}
@@ -207,10 +207,11 @@ export default function ExpertSuggestions() {
               <div>
                 <label className="text-sm text-gray-600 mb-2 block">Select Season</label>
                 <Select value={selectedSeason} onValueChange={setSelectedSeason}>
-                  <SelectTrigger>
+                  <SelectTrigger className={"bg-green-100 text-green-800 border border-green-200 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-300"}>
                     <SelectValue placeholder="Choose season" />
                   </SelectTrigger>
-                  <SelectContent>
+                 
+                  <SelectContent className={"bg-white text-gray-900 border border-gray-200 rounded-md shadow-lg z-50 mt-1 min-w-[160px]"}>
                     <SelectItem value="all">All Seasons</SelectItem>
                     <SelectItem value="Kharif">Kharif (Monsoon)</SelectItem>
                     <SelectItem value="Rabi">Rabi (Winter)</SelectItem>
