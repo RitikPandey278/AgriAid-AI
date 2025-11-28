@@ -18,13 +18,6 @@ export default function Chatbot() {
   const [language, setLanguage] = useState("hi"); // hi/en/bho/pa
   const messagesEndRef = useRef(null);
 
-  // LANGUAGE MAP
-  const languageMap = {
-    hi: "Hindi",
-    en: "English",
-    bho: "Bhojpuri",
-    pa: "Punjabi",
-  };
 
   // PLACEHOLDERS
   const placeholders = {
@@ -41,77 +34,18 @@ export default function Chatbot() {
 
   // -------------------- AI RESPONSE FUNCTION --------------------
   const getAIResponse = async (msg, lang = "hi") => {
-    const API_KEY =
-      "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";
-
-    if (!API_KEY) {
-      return "API Key Missing";
-    }
-
-    try {
-      const instructLang = languageMap[lang] || "Hindi";
-
-      // Strong language forcing prompt
-      const strongPrompt = `
-You are AgriAid AI, a farming expert.
-
-LANGUAGE RULE:
-- User selected language: ${instructLang}
-- ALWAYS reply in EXACT ${instructLang}.
-- If Bhojpuri is selected, speak in PURE Bhojpuri only.
-- No mixing of any other language.
-
-STRICT SAFETY RULE:
-- DO NOT make up fake mandi rates, crop prices, weather, or government scheme amounts.
-- If the user asks for current price (e.g., sugarcane, wheat, rice, dal, mustard etc.),
-  ALWAYS reply: "Live market rate main nahi de sakta."
-- Then explain where they can check official rate (Agmarknet, e-Nam, local mandi, dealer).
-
-OUTPUT GUARANTEE:
-- NEVER generate random text, code, numbers, symbols or gibberish.
-- NEVER generate imaginary stories.
-- KEEP answers short, clean, factual and helpful.
-
-ASSISTANT ROLE:
-- Give practical farming guidance only:
-  - Sowing method
-  - Irrigation schedule
-  - Fertilizer plan
-  - Pest/disease control
-  - Harvesting steps
-`;
-
-
-      const response = await fetch(
-        "https://openrouter.ai/api/v1/chat/completions",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${API_KEY}`,
-          },
-          body: JSON.stringify({
-            model: "meta-llama/llama-3.1-8b-instruct",
-            messages: [
-              { role: "system", content: strongPrompt  },
-              { role: "user", content: msg },
-            ],
-          }),
-        }
-      );
-      
-
-      if (!response.ok) {
-        return "Server error — try again later.";
-      }
-
+    try{
+      const response = await fetch("http://localhost:5000/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: msg, lang}),
+      });
       const data = await response.json();
-      return (
-        data?.choices?.[0]?.message?.content ||
-        "No response from AI. Please try again."
-      );
+      return data.reply || "Server error — please try again.";
     } catch (error) {
-      console.error("Error:", error);
+      console.error("Frontend Error:", error);
       return "Network issue — try again.";
     }
   };
