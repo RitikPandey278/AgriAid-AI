@@ -19,7 +19,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const res = await axios.post("https://agriaid-ai.onrender.com/api/chat", {
+      const res = await axios.post("https://agriaid-ai.onrender.com/api/login", {
         email,
         password,
       });

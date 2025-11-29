@@ -9,8 +9,10 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors({ origin: ["https://cerulean-kataifi-b464f5.netlify.app","https://agriaid-ai.onrender.com"], credentials: true }));
-app.use(express.json());
+app.use(cors({ origin: ["https://sweet-lollipop-be0eb5.netlify.app","https://agriaid-ai.onrender.com", "http://localhost:5173"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true }));
+app.options("*", cors());
 
 // MongoDB Connection
 mongoose
