@@ -36,7 +36,7 @@ export default function Signup() {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/signup", {
+      const res = await axios.post("https://agriaid-ai.onrender.com/api/chat", {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,
