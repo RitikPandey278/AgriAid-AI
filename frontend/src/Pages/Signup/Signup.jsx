@@ -225,3 +225,4 @@ export default function Signup() {
     </div>
   );
 }
+// "http://localhost:5000/api/auth/signup",

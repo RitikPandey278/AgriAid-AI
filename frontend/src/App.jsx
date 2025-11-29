@@ -29,7 +29,7 @@ function App() {
     <Router>
       <Header/>
       <Toaster position="top-right" reverseOrder={false}/>
-      <SonnerToaster/>
+      <SonnerToaster position="top-center" />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/disease-detection" element={<DiseaseDetection />} />

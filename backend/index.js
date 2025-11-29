@@ -9,11 +9,9 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors({ origin: ["https://sweet-lollipop-be0eb5.netlify.app", "http://localhost:5173"],
- methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-
-  credentials: true }));
-app.options("*", cors());
+app.use(cors({ origin: ["https://sweet-lollipop-be0eb5.netlify.app","http://localhost:5173","http://localhost:3000"],
+   credentials: true }));
+app.use(express.json());
 
 // MongoDB Connection
 mongoose

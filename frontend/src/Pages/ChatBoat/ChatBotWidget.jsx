@@ -35,13 +35,14 @@ export default function Chatbot() {
   // -------------------- AI RESPONSE FUNCTION --------------------
   const getAIResponse = async (msg, lang = "hi") => {
     try{
-      const response = await fetch("https://agriaid-ai.onrender.com/api/chat", {
+      const response = await fetch("https:agriaid-ai.onrender.com/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ message: msg, lang}),
       });
+      
       const data = await response.json();
       return data.reply || "Server error — please try again.";
     } catch (error) {
@@ -174,3 +175,4 @@ export default function Chatbot() {
     </div>
   );
 }
+// "http://localhost:5000/api/chat",
