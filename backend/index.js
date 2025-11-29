@@ -9,8 +9,9 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors({ origin: ["https://sweet-lollipop-be0eb5.netlify.app","https://agriaid-ai.onrender.com", "http://localhost:5173"],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+app.use(cors({ origin: ["https://sweet-lollipop-be0eb5.netlify.app", "http://localhost:5173"],
+ methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+
   credentials: true }));
 app.options("*", cors());
 
