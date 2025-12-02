@@ -35,7 +35,7 @@ export default function Chatbot() {
   // -------------------- AI RESPONSE FUNCTION --------------------
   const getAIResponse = async (msg, lang = "hi") => {
     try{
-      const response = await fetch("https:agriaid-ai.onrender.com/api/chat", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/chat`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

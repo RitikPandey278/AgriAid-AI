@@ -36,7 +36,7 @@ export default function Signup() {
     }
 
     try {
-      const res = await axios.post("https://agriaid-ai.onrender.com/api/signup", {
+      const res = await axios.post( `${import.meta.env.VITE_API_URL}/api/signup`, {
         name: formData.name,
         email: formData.email,
         phone: formData.phone,

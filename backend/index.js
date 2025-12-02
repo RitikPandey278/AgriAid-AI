@@ -10,7 +10,22 @@ const app = express();
 
 // Middleware
 app.use(cors({ origin: ["https://sweet-lollipop-be0eb5.netlify.app","http://localhost:5173","http://localhost:3000"],
-   credentials: true }));
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"], 
+  credentials: true }));
+  app.options("*", cors());
+
+  app.use((req, res, next) =>{
+    res.header("Access-Control-Allow-Origin", "https://sweet-lollipop-be0eb5.netlify.app");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    
+    if
+    (req.method === "OPTIONS") {
+      return res.sendStatus(200);
+    }
+    next();
+  });
 app.use(express.json());
 
 // MongoDB Connection
