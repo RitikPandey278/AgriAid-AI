@@ -13,7 +13,6 @@ app.use(cors({ origin: ["https://sweet-lollipop-be0eb5.netlify.app","http://loca
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"], 
   credentials: true }));
-  app.options("*", cors());
 
   app.use((req, res, next) =>{
     res.header("Access-Control-Allow-Origin", "https://sweet-lollipop-be0eb5.netlify.app");
