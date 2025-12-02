@@ -9,7 +9,7 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors({ origin: ["https://sweet-lollipop-be0eb5.netlify.app","http://localhost:5173","http://localhost:3000"],
+app.use(cors({ origin: ["https://mellow-smakager-a976e5.netlify.app","http://localhost:5173","http://localhost:3000"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"], 
   credentials: true }));
